@@ -12,18 +12,23 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-## Pestañas
+## Secciones
 
-- **Registro diario**: elige la fecha (◀ Hoy ▶), ingresa ventas o compras. El monto puede ser
-  total (con IVA, se desglosa el neto) o neto (se le suma el IVA). Doble clic para editar, Supr para eliminar.
-  Abajo se ve el IVA débito, el IVA crédito y el IVA a pagar del día.
-- **Resumen y exportación**: totales diarios del mes o del rango de fechas, y botón **Exportar a Excel…**.
+- **Ventas** y **Compras**: cada una tiene dos subpestañas.
+  - **Registro diario**: elige la fecha (◀ Hoy ▶) e ingresa los registros. El monto puede ser total
+    (con IVA, se desglosa el neto) o neto (se le suma el IVA). Doble clic para editar, Supr para eliminar.
+    Muestra los totales del día y el acumulado del mes.
+  - **Libro de ventas / compras**: lista del mes o rango de fechas (cada registro o totales por día)
+    y botón para exportar solo ventas o solo compras a Excel.
+- **Resumen IVA (ventas − compras)**: totales diarios combinados, IVA débito, IVA crédito e IVA a pagar
+  o saldo a favor, con exportación a Excel.
 - **Configuración**: tasa de IVA, si los montos incluyen IVA por defecto, decimales, moneda y datos de la empresa.
-  Cada movimiento guarda su propia tasa, así que cambiarla no altera lo ya registrado.
+  Cada registro guarda su propia tasa, así que cambiarla no altera lo ya ingresado.
 
-## Planilla Excel
+## Planillas Excel
 
-Tiene tres hojas: **Resumen** (totales e IVA a pagar o saldo a favor), **Resumen diario**
-(una fila por día, con fórmulas) y **Detalle** (cada movimiento, con filtros).
+- **Libro de ventas / compras**: hojas **Resumen**, **Por día** y **Detalle** (con totales y filtros).
+- **Resumen IVA**: hojas **Resumen** (IVA a pagar o saldo a favor), **Resumen diario** (con fórmulas)
+  y **Detalle** (ventas y compras juntas, con filtros).
 
 Los datos quedan en `datos_iva.db`, junto al programa. Desde Configuración puedes crear una copia de seguridad.

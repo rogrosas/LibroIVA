@@ -169,11 +169,13 @@ class BaseDatos:
     def obtener(self, id_):
         return self.con.execute("SELECT * FROM movimientos WHERE id=?", (id_,)).fetchone()
 
-    def listar(self, desde, hasta):
-        return self.con.execute(
-            "SELECT * FROM movimientos WHERE fecha BETWEEN ? AND ? ORDER BY fecha, tipo DESC, id",
-            (desde.isoformat(), hasta.isoformat()),
-        ).fetchall()
+    def listar(self, desde, hasta, tipo=None):
+        sql = "SELECT * FROM movimientos WHERE fecha BETWEEN ? AND ?"
+        params = [desde.isoformat(), hasta.isoformat()]
+        if tipo:
+            sql += " AND tipo = ?"
+            params.append(tipo)
+        return self.con.execute(sql + " ORDER BY fecha, tipo DESC, id", params).fetchall()
 
     _SUMAS = """
         COALESCE(SUM(CASE WHEN tipo='venta'  THEN 1     END), 0) AS n_ventas,
